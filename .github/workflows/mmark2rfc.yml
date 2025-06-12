@@ -23,10 +23,10 @@ jobs:
       uses: actions/setup-go@v5
     - name: download mmark
       uses: robinraju/release-downloader@v1
-        with:
-          repository: mmarkdown/mmark/
-          tag: v2.2.47
-          fileName: mmark_2.2.47_linux_amd64.tgz 
+      with:
+        repository: mmarkdown/mmark/
+        tag: v2.2.47
+        fileName: mmark_2.2.47_linux_amd64.tgz 
     - name: un-tar
       run: |
         tar xzvf mmark_2.2.47_linux_amd64.tgz
