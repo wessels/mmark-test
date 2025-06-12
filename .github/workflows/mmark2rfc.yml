@@ -22,7 +22,7 @@ jobs:
     - name: Clone kramdown-rfc repo
       uses: GuillaumeFalourd/clone-github-repo-action@v2.3
       with:
-        branch: main
+        branch: master
         owner: cabo
         repository: kramdown-rfc
     - name: Set up Ruby
