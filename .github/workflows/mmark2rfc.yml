@@ -24,7 +24,7 @@ jobs:
     - name: download mmark
       uses: robinraju/release-downloader@v1
       with:
-        repository: mmarkdown/mmark/
+        repository: mmarkdown/mmark
         tag: v2.2.47
         fileName: mmark_2.2.47_linux_amd64.tgz 
     - name: un-tar
