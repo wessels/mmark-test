@@ -32,7 +32,7 @@ jobs:
         tar xzvf mmark_2.2.47_linux_amd64.tgz
     - name: mmark
       run: |
-        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml
+        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml && cat draft-ietf-deleg.xml
     - name: run xml2rfc
       run: |
         xml2rfc draft-ietf-deleg.xml && cat draft-ietf-deleg.txt
