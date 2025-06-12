@@ -19,20 +19,31 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install xml2rfc
-    - name: Set up Go
-      uses: actions/setup-go@v5
-    - name: download mmark
-      uses: robinraju/release-downloader@v1
+    - name: Clone kramdown-rfc repo
+      uses: GuillaumeFalourd/clone-github-repo-action@v2.3
       with:
-        repository: mmarkdown/mmark
-        tag: v2.2.47
-        fileName: mmark_2.2.47_linux_amd64.tgz 
-    - name: un-tar
+        branch: main
+        owner: cabo
+        repository: kramdown-rfc
+    - name: Set up Ruby
+      uses: actions/setup-ruby@v1
+    - name: run gem install
       run: |
-        tar xzvf mmark_2.2.47_linux_amd64.tgz
-    - name: tweak $PATH
-      run: |
-        echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
+        gem install kramdown-rfc
+#    - name: Set up Go
+#      uses: actions/setup-go@v5
+#    - name: download mmark
+#      uses: robinraju/release-downloader@v1
+#      with:
+#        repository: mmarkdown/mmark
+#        tag: v2.2.47
+#        fileName: mmark_2.2.47_linux_amd64.tgz 
+#    - name: un-tar
+#      run: |
+#        tar xzvf mmark_2.2.47_linux_amd64.tgz
+#    - name: tweak $PATH
+#      run: |
+#        echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
 #    - name: mmark
 #      run: |
 #        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml && cat draft-ietf-deleg.xml
