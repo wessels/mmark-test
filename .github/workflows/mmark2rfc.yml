@@ -30,12 +30,18 @@ jobs:
     - name: un-tar
       run: |
         tar xzvf mmark_2.2.47_linux_amd64.tgz
-    - name: mmark
+    - name: tweak $PATH
       run: |
-        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml && cat draft-ietf-deleg.xml
-    - name: run xml2rfc
+        echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
+#    - name: mmark
+#      run: |
+#        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml && cat draft-ietf-deleg.xml
+#    - name: run xml2rfc
+#      run: |
+#        xml2rfc draft-ietf-deleg.xml && cat draft-ietf-deleg.txt
+    - name: make
       run: |
-        xml2rfc draft-ietf-deleg.xml && cat draft-ietf-deleg.txt
+        make
     - name: Commit updated file
       uses: EndBug/add-and-commit@v9
       with:
