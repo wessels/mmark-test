@@ -15,7 +15,7 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
-    - name: Install dependencies
+    - name: Install xml2rfc
       run: |
         python -m pip install --upgrade pip
         pip install xml2rfc
@@ -30,27 +30,7 @@ jobs:
     - name: run gem install
       run: |
         gem install kramdown-rfc
-#    - name: Set up Go
-#      uses: actions/setup-go@v5
-#    - name: download mmark
-#      uses: robinraju/release-downloader@v1
-#      with:
-#        repository: mmarkdown/mmark
-#        tag: v2.2.47
-#        fileName: mmark_2.2.47_linux_amd64.tgz 
-#    - name: un-tar
-#      run: |
-#        tar xzvf mmark_2.2.47_linux_amd64.tgz
-#    - name: tweak $PATH
-#      run: |
-#        echo "$GITHUB_WORKSPACE" >> $GITHUB_PATH
-#    - name: mmark
-#      run: |
-#        ./mmark < draft-ietf-deleg.md > draft-ietf-deleg.xml && cat draft-ietf-deleg.xml
-#    - name: run xml2rfc
-#      run: |
-#        xml2rfc draft-ietf-deleg.xml && cat draft-ietf-deleg.txt
-    - name: make
+    - name: Make draft
       run: |
         make
     - name: Commit updated file
@@ -58,8 +38,8 @@ jobs:
       with:
         author_name: GitHub Action
         author_email: action@github.com
-        message: "Regenerate .txt"
-        add: draft-ietf-deleg.txt
+        message: "Regenerate .txt via GitHub action"
+        add: draft-ietf-deleg.txt draft-ietf-deleg.html
     - name: Push I-D file
       uses: ad-m/github-push-action@master
       with:
